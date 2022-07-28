@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Documents Management System</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+<div class="container my-2">
+    <h1>Documents List</h1>
+
+    <a th:href="@{/showNewDocForm}" class="btn btn-primary btn-sm mb-3"> Add Doc </a>
+
+    <table border="1" class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Doc id</th>
+            <th>Предприятие владелец</th>
+            <th>Децималь</th>
+            <th>Порядковый номер</th>
+            <th>Дата создания</th>
+            <th> Actions </th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--/*@thymesVar id="allDocs" type="java.util.List<ru.almazrostov.searchdoc.entity.Doc>"*/-->
+        <tr th:each="doc : ${allDocs}">
+            <td th:text="${doc.uuid}"></td>
+            <td th:text="${doc.ownerDoc}"></td>
+            <td th:text="${doc.decimalNumber}"></td>
+            <td th:text="${doc.part}"></td>
+            <td th:text="${#temporals.format(doc.creationDate, 'dd-MM-yyyy')}"></td>
+            <td> <a th:href="@{/showFormForUpdate/{id}(id=${doc.uuid})}" class="btn btn-primary">Update</a>
+                <a th:href="@{/deleteDoc/{id}(id=${doc.uuid})}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+
+</html>

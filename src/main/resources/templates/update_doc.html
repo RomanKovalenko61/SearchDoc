@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Doc Management System</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="container">
+    <h1>Doc Management System</h1>
+    <hr>
+    <h2>Update Doc</h2>
+
+    <!--/*@thymesVar id="doc" type="ru.almazrostov.searchdoc.entity.Doc"*/-->
+    <form action="#" th:action="@{/saveDoc}" th:object="${doc}" method="POST">
+
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{uuid}" />
+
+        <select th:field="*{ownerDoc}" class="form-control mb-4 col-4">
+            <!--/*@thymesVar id="owners" type="java.util.List<ru.almazrostov.searchdoc.entity.OwnerDoc>"*/-->
+            <option th:each="owner : ${owners}" th:value="${owner.name()}" th:text="${owner}"></option>
+        </select>
+
+        <br/>
+
+        <input type="number" th:field="*{decimalNumber}" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{part}" class="form-control mb-4 col-4">
+
+        <input type="date" th:field="*{creationDate}" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2"> Update Doc</button>
+    </form>
+
+    <hr>
+
+    <a th:href="@{/}"> Back to Docs List</a>
+</div>
+</body>
+
+</html>
