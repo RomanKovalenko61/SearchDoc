@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.almazrostov.searchdoc.model.Doc;
+import ru.almazrostov.searchdoc.model.Product;
 import ru.almazrostov.searchdoc.repository.DocsRepository;
 
 import java.util.List;
@@ -49,5 +50,10 @@ public class DocServiceImpl implements DocService {
     @Transactional
     public void deleteDocById(UUID uuid) {
         docsRepository.deleteById(uuid);
+    }
+
+    @Override
+    public List<Doc> findAllByProduct(Product product) {
+        return docsRepository.findAllByProduct(product);
     }
 }

@@ -36,6 +36,13 @@ public class MyController {
         return "all-docs.html";
     }
 
+    @RequestMapping("/product/{product}")
+    public String showAllDocsByProduct(@PathVariable String product, Model model) {
+        List<Doc> allDocs = docService.findAllByProduct(Product.valueOf(product));
+        model.addAttribute("allDocs", allDocs);
+        return "all-docs.html";
+    }
+
     @GetMapping("/showNewDocForm")
     public String showNewDocForm(Model model) {
         Doc doc = new Doc();
