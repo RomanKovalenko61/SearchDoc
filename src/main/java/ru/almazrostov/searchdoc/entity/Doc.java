@@ -37,6 +37,14 @@ public class Doc {
     @Column(name = "type_doc")
     private TypeDoc typeDoc;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "model")
+    private Model model;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private Status status;
+
     public Doc() {
     }
 
@@ -100,6 +108,22 @@ public class Doc {
 
     public void setTypeDoc(TypeDoc typeDoc) {
         this.typeDoc = typeDoc;
+    }
+
+    public Model getModel() {
+        return model;
+    }
+
+    public void setModel(Model model) {
+        this.model = model;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     @Override

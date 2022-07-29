@@ -34,6 +34,20 @@
 
         <br/>
 
+        <select th:field="*{model}" class="form-control mb-4 col-4">
+            <!--/*@thymesVar id="models" type="java.util.List<ru.almazrostov.searchdoc.entity.Model>"*/-->
+            <option th:each="model : ${models}" th:value="${model.name()}" th:text="${model}"></option>
+        </select>
+
+        <br/>
+
+        <select th:field="*{status}" class="form-control mb-4 col-4">
+            <!--/*@thymesVar id="statuses" type="java.util.List<ru.almazrostov.searchdoc.entity.Status>"*/-->
+            <option th:each="status : ${statuses}" th:value="${status.name()}" th:text="${status}"></option>
+        </select>
+
+        <br/>
+
         <input type="number" th:field="*{decimalNumber}" class="form-control mb-4 col-4">
 
         <input type="text" th:field="*{part}" class="form-control mb-4 col-4">

@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.almazrostov.searchdoc.entity.Doc;
 import ru.almazrostov.searchdoc.entity.OwnerDoc;
+import ru.almazrostov.searchdoc.entity.Status;
 import ru.almazrostov.searchdoc.entity.TypeDoc;
 import ru.almazrostov.searchdoc.service.DocService;
 import ru.almazrostov.searchdoc.util.GenerateUUIDForDocUtil;
@@ -22,6 +23,9 @@ public class MyController {
 
     private static final ArrayList<OwnerDoc> ownerList = new ArrayList<>(Arrays.asList(OwnerDoc.values()));
     private static final ArrayList<TypeDoc> typeDocList = new ArrayList<>(Arrays.asList(TypeDoc.values()));
+    private static final ArrayList<ru.almazrostov.searchdoc.entity.Model> modelList =
+            new ArrayList<>(Arrays.asList(ru.almazrostov.searchdoc.entity.Model.values()));
+    private static final ArrayList<Status> statusList = new ArrayList<>(Arrays.asList(Status.values()));
 
     @Autowired
     public MyController(DocService docService) {
@@ -38,9 +42,7 @@ public class MyController {
     @GetMapping("/showNewDocForm")
     public String showNewDocForm(Model model) {
         Doc doc = new Doc();
-        model.addAttribute("doc", doc);
-        model.addAttribute("owners", ownerList);
-        model.addAttribute("types", typeDocList);
+        putAllGeneralAttributesToModel(model, doc);
         return "new_doc.html";
     }
 
@@ -54,9 +56,7 @@ public class MyController {
     @GetMapping("/showFormForUpdate/{id}")
     public String showFormForUpdate(@PathVariable(value = "id") String uuid, Model model) {
         Doc doc = docService.getDocById(UUID.fromString(uuid));
-        model.addAttribute("doc", doc);
-        model.addAttribute("owners", ownerList);
-        model.addAttribute("types", typeDocList);
+        putAllGeneralAttributesToModel(model, doc);
         return "update_doc.html";
     }
 
@@ -64,5 +64,14 @@ public class MyController {
     public String deleteDoc(@PathVariable(value = "id") String uuid) {
         docService.deleteDocById(UUID.fromString(uuid));
         return "redirect:/";
+    }
+
+    private static Model putAllGeneralAttributesToModel(Model model, Doc doc) {
+        model.addAttribute("doc", doc);
+        model.addAttribute("owners", ownerList);
+        model.addAttribute("types", typeDocList);
+        model.addAttribute("models", modelList);
+        model.addAttribute("statuses", statusList);
+        return model;
     }
 }

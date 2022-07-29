@@ -21,6 +21,16 @@
             <option th:each="type : ${types}" th:value="${type.name()}" th:text="${type}"></option>
         </select>
 
+        <select th:field="*{model}" class="form-control mb-4 col-4">
+            <!--/*@thymesVar id="models" type="java.util.List<ru.almazrostov.searchdoc.entity.Model>"*/-->
+            <option th:each="model : ${models}" th:value="${model.name()}" th:text="${model}"></option>
+        </select>
+
+        <select th:field="*{status}" class="form-control mb-4 col-4">
+            <!--/*@thymesVar id="statuses" type="java.util.List<ru.almazrostov.searchdoc.entity.Status>"*/-->
+            <option th:each="status : ${statuses}" th:value="${status.name()}" th:text="${status}"></option>
+        </select>
+
         <select th:field="*{ownerDoc}" class="form-control mb-4 col-4">
             <!--/*@thymesVar id="owners" type="java.util.List<ru.almazrostov.searchdoc.entity.OwnerDoc>"*/-->
             <option th:each="owner : ${owners}" th:value="${owner.name()}" th:text="${owner}"></option>
