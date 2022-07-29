@@ -32,3 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 /src/main/java/ru/almazrostov/searchdoc/test.java
+/.tmp.driveupload/

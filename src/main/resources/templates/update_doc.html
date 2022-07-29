@@ -20,6 +20,13 @@
         <!-- Add hidden form field to handle update -->
         <input type="hidden" th:field="*{uuid}" />
 
+        <select th:field="*{typeDoc}" class="form-control mb-4 col-4">
+            <!--/*@thymesVar id="types" type="java.util.List<ru.almazrostov.searchdoc.entity.TypeDoc>"*/-->
+            <option th:each="type : ${types}" th:value="${type.name()}" th:text="${type}"></option>
+        </select>
+
+        <br/>
+
         <select th:field="*{ownerDoc}" class="form-control mb-4 col-4">
             <!--/*@thymesVar id="owners" type="java.util.List<ru.almazrostov.searchdoc.entity.OwnerDoc>"*/-->
             <option th:each="owner : ${owners}" th:value="${owner.name()}" th:text="${owner}"></option>
@@ -32,6 +39,8 @@
         <input type="text" th:field="*{part}" class="form-control mb-4 col-4">
 
         <input type="date" th:field="*{creationDate}" class="form-control mb-4 col-4">
+
+        <input type="date" th:field="*{expirationDate}" class="form-control mb-4 col-4">
 
         <button type="submit" class="btn btn-info col-2"> Update Doc</button>
     </form>

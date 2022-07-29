@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.almazrostov.searchdoc.entity.Doc;
 import ru.almazrostov.searchdoc.entity.OwnerDoc;
+import ru.almazrostov.searchdoc.entity.TypeDoc;
 import ru.almazrostov.searchdoc.service.DocService;
 import ru.almazrostov.searchdoc.util.GenerateUUIDForDocUtil;
 
@@ -20,6 +21,7 @@ public class MyController {
     private final DocService docService;
 
     private static final ArrayList<OwnerDoc> ownerList = new ArrayList<>(Arrays.asList(OwnerDoc.values()));
+    private static final ArrayList<TypeDoc> typeDocList = new ArrayList<>(Arrays.asList(TypeDoc.values()));
 
     @Autowired
     public MyController(DocService docService) {
@@ -38,6 +40,7 @@ public class MyController {
         Doc doc = new Doc();
         model.addAttribute("doc", doc);
         model.addAttribute("owners", ownerList);
+        model.addAttribute("types", typeDocList);
         return "new_doc.html";
     }
 
@@ -53,6 +56,7 @@ public class MyController {
         Doc doc = docService.getDocById(UUID.fromString(uuid));
         model.addAttribute("doc", doc);
         model.addAttribute("owners", ownerList);
+        model.addAttribute("types", typeDocList);
         return "update_doc.html";
     }
 

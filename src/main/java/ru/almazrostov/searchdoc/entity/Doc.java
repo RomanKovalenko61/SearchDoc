@@ -25,9 +25,17 @@ public class Doc {
     @Column(name = "part")
     private String part;
 
-    @Column(name ="creation_date")
+    @Column(name = "creation_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate creationDate;
+
+    @Column(name = "expiration_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate expirationDate;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type_doc")
+    private TypeDoc typeDoc;
 
     public Doc() {
     }
@@ -76,6 +84,22 @@ public class Doc {
 
     public void setCreationDate(LocalDate date) {
         this.creationDate = date;
+    }
+
+    public LocalDate getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(LocalDate expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
+    public TypeDoc getTypeDoc() {
+        return typeDoc;
+    }
+
+    public void setTypeDoc(TypeDoc typeDoc) {
+        this.typeDoc = typeDoc;
     }
 
     @Override
