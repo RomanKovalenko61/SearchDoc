@@ -1,6 +1,6 @@
 package ru.almazrostov.searchdoc.service;
 
-import ru.almazrostov.searchdoc.entity.Doc;
+import ru.almazrostov.searchdoc.model.Doc;
 
 import java.util.List;
 import java.util.UUID;

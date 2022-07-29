@@ -1,4 +1,4 @@
-package ru.almazrostov.searchdoc.entity;
+package ru.almazrostov.searchdoc.model;
 
 public enum OwnerDoc {
     ALMAZ("КСДИ"),

@@ -32,7 +32,7 @@
         </tr>
         </thead>
         <tbody>
-        <!--/*@thymesVar id="allDocs" type="java.util.List<ru.almazrostov.searchdoc.entity.Doc>"*/-->
+        <!--/*@thymesVar id="allDocs" type="java.util.List<ru.almazrostov.searchdoc.model.Doc>"*/-->
         <tr th:each="doc : ${allDocs}">
             <td th:text="${doc.uuid}"></td>
             <td th:text="${doc.ownerDoc}"></td>
@@ -41,7 +41,7 @@
             <td th:text="${#temporals.format(doc.creationDate, 'dd-MM-yyyy')}"></td>
             <td th:text="${#temporals.format(doc.expirationDate, 'dd-MM-yyyy')}"></td>
             <td th:text="${doc.typeDoc}"></td>
-            <td th:text="${doc.model}"></td>
+            <td th:text="${doc.product}"></td>
             <td th:text="${doc.status}"></td>
             <td> <a th:href="@{/showFormForUpdate/{id}(id=${doc.uuid})}" class="btn btn-primary">Update</a>
                 <a th:href="@{/deleteDoc/{id}(id=${doc.uuid})}" class="btn btn-danger">Delete</a>

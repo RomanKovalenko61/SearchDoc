@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.almazrostov.searchdoc.entity.Doc;
-import ru.almazrostov.searchdoc.entity.OwnerDoc;
-import ru.almazrostov.searchdoc.entity.Status;
-import ru.almazrostov.searchdoc.entity.TypeDoc;
+import ru.almazrostov.searchdoc.model.*;
 import ru.almazrostov.searchdoc.service.DocService;
 import ru.almazrostov.searchdoc.util.GenerateUUIDForDocUtil;
 
@@ -23,8 +20,8 @@ public class MyController {
 
     private static final ArrayList<OwnerDoc> ownerList = new ArrayList<>(Arrays.asList(OwnerDoc.values()));
     private static final ArrayList<TypeDoc> typeDocList = new ArrayList<>(Arrays.asList(TypeDoc.values()));
-    private static final ArrayList<ru.almazrostov.searchdoc.entity.Model> modelList =
-            new ArrayList<>(Arrays.asList(ru.almazrostov.searchdoc.entity.Model.values()));
+    private static final ArrayList<Product> productList =
+            new ArrayList<>(Arrays.asList(Product.values()));
     private static final ArrayList<Status> statusList = new ArrayList<>(Arrays.asList(Status.values()));
 
     @Autowired
@@ -70,7 +67,7 @@ public class MyController {
         model.addAttribute("doc", doc);
         model.addAttribute("owners", ownerList);
         model.addAttribute("types", typeDocList);
-        model.addAttribute("models", modelList);
+        model.addAttribute("products", productList);
         model.addAttribute("statuses", statusList);
         return model;
     }

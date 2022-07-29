@@ -3,7 +3,7 @@ package ru.almazrostov.searchdoc.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.almazrostov.searchdoc.entity.Doc;
+import ru.almazrostov.searchdoc.model.Doc;
 import ru.almazrostov.searchdoc.repository.DocsRepository;
 
 import java.util.List;

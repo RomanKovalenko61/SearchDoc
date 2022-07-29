@@ -1,6 +1,6 @@
-package ru.almazrostov.searchdoc.entity;
+package ru.almazrostov.searchdoc.model;
 
-public enum Model {
+public enum Product {
     BG("БГ"),
     MS4("МС4"),
     MS401("МС4-01"),
@@ -60,7 +60,7 @@ public enum Model {
 
     private String description;
 
-    Model(String description) {
+    Product(String description) {
         this.description = description;
     }
 

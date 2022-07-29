@@ -1,7 +1,7 @@
 package ru.almazrostov.searchdoc.util;
 
 import org.springframework.stereotype.Component;
-import ru.almazrostov.searchdoc.entity.Doc;
+import ru.almazrostov.searchdoc.model.Doc;
 
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;

@@ -1,4 +1,4 @@
-package ru.almazrostov.searchdoc.entity;
+package ru.almazrostov.searchdoc.model;
 
 import org.hibernate.annotations.Type;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -38,8 +38,8 @@ public class Doc {
     private TypeDoc typeDoc;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "model")
-    private Model model;
+    @Column(name = "product")
+    private Product product;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
@@ -110,12 +110,12 @@ public class Doc {
         this.typeDoc = typeDoc;
     }
 
-    public Model getModel() {
-        return model;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setModel(Model model) {
-        this.model = model;
+    public void setProduct(Product model) {
+        this.product = model;
     }
 
     public Status getStatus() {
