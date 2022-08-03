@@ -16,6 +16,12 @@ public class GenerateUUIDForDocUtil {
         sb.append(doc.getDecimalNumber());
         sb.append(".");
         sb.append(doc.getPart());
+        sb.append("-");
+        sb.append(doc.getVersion());
+        sb.append(":");
+        sb.append(doc.getTypeDoc().name());
+        sb.append(":year:");
+        sb.append(doc.getCreationDate());
 
         return UUID.nameUUIDFromBytes(sb.toString().getBytes(StandardCharsets.UTF_8));
     }

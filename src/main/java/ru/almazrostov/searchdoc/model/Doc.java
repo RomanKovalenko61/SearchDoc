@@ -25,6 +25,12 @@ public class Doc {
     @Column(name = "part")
     private String part;
 
+    @Column(name = "of_parts")
+    private int ofParts;
+
+    @Column(name = "version")
+    private int version;
+
     @Column(name = "creation_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate creationDate;
@@ -44,6 +50,12 @@ public class Doc {
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private Status status;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "href")
+    private String href;
 
     public Doc() {
     }
@@ -76,6 +88,22 @@ public class Doc {
 
     public void setPart(String part) {
         this.part = part;
+    }
+
+    public int getOfParts() {
+        return ofParts;
+    }
+
+    public void setOfParts(int ofParts) {
+        this.ofParts = ofParts;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 
     public OwnerDoc getOwnerDoc() {
@@ -124,6 +152,22 @@ public class Doc {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getHref() {
+        return href;
+    }
+
+    public void setHref(String href) {
+        this.href = href;
     }
 
     @Override
