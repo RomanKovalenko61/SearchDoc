@@ -23,11 +23,14 @@
             <th>Предприятие владелец</th>
             <th>Децималь</th>
             <th>Порядковый номер</th>
+            <th>Литера документа</th>
             <th>Дата создания</th>
             <th>Срок действия</th>
             <th>Тип документа</th>
             <th>Модель</th>
             <th>Статус</th>
+            <th>Описание</th>
+            <th>Ссылка</th>
             <th> Actions </th>
         </tr>
         </thead>
@@ -38,11 +41,14 @@
             <td th:text="${doc.ownerDoc}"></td>
             <td th:text="${doc.decimalNumber}"></td>
             <td th:text="${doc.part}"></td>
+            <td th:text="${doc.version}"></td>
             <td th:text="${#temporals.format(doc.creationDate, 'dd-MM-yyyy')}"></td>
             <td th:text="${#temporals.format(doc.expirationDate, 'dd-MM-yyyy')}"></td>
             <td th:text="${doc.typeDoc}"></td>
             <td th:text="${doc.product}"></td>
             <td th:text="${doc.status}"></td>
+            <td th:text="${doc.description}"></td>
+            <td th:text="${doc.href}"></td>
             <td> <a th:href="@{/showFormForUpdate/{id}(id=${doc.uuid})}" class="btn btn-primary">Update</a>
                 <a th:href="@{/deleteDoc/{id}(id=${doc.uuid})}" class="btn btn-danger">Delete</a>
             </td>
