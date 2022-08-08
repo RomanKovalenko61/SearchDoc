@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.almazrostov.searchdoc.model.*;
 import ru.almazrostov.searchdoc.service.DocService;
-import ru.almazrostov.searchdoc.util.GenerateUUIDForDocUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -52,7 +51,9 @@ public class MyController {
 
     @PostMapping("/saveDoc")
     public String saveDoc(@ModelAttribute("doc") Doc doc) {
-        doc.setUuid(GenerateUUIDForDocUtil.generateUUID(doc));
+        if (doc.getUuid() == null) {
+            doc.setUuid(UUID.randomUUID());
+        }
         docService.saveDoc(doc);
         return "redirect:/";
     }
