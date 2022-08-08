@@ -5,6 +5,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -28,9 +30,6 @@ public class Doc {
     @Column(name = "of_parts")
     private int ofParts;
 
-    @Column(name = "version")
-    private int version;
-
     @Column(name = "creation_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate creationDate;
@@ -51,19 +50,19 @@ public class Doc {
     @Column(name = "status")
     private Status status;
 
-    @Column(name = "description")
-    private String description;
-
-    @Column(name = "href")
-    private String href;
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "doc")
+    private List<DocsVersion> docsVersionList;
 
     public Doc() {
     }
 
-    public Doc(OwnerDoc owner, int i, String s) {
-        this.ownerDoc = owner;
-        this.decimalNumber = i;
-        this.part = s;
+    public void addDocVersion(DocsVersion docsVersion) {
+        if (docsVersionList == null) {
+            docsVersionList = new ArrayList<>();
+        }
+        docsVersionList.add(docsVersion);
+        docsVersion.setDoc(this);
     }
 
     public UUID getUuid() {
@@ -96,14 +95,6 @@ public class Doc {
 
     public void setOfParts(int ofParts) {
         this.ofParts = ofParts;
-    }
-
-    public int getVersion() {
-        return version;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
     }
 
     public OwnerDoc getOwnerDoc() {
@@ -154,20 +145,12 @@ public class Doc {
         this.status = status;
     }
 
-    public String getDescription() {
-        return description;
+    public List<DocsVersion> getDocsVersionList() {
+        return docsVersionList;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getHref() {
-        return href;
-    }
-
-    public void setHref(String href) {
-        this.href = href;
+    public void setDocsVersionList(List<DocsVersion> docsVersionList) {
+        this.docsVersionList = docsVersionList;
     }
 
     @Override

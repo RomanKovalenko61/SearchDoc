@@ -63,15 +63,26 @@
                 <label for="expirationDate">Срок действия</label>
                 <input id="expirationDate" type="date" th:field="*{expirationDate}" class="form-control">
             </div>
-        </div>
-        <div class="form-group">
-            <label for="description">Описание</label>
-            <textarea id='description' th:field="*{description}" rows="3" cols="148"
-                      placeholder="Doc description"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="href">Ссылка</label>
-            <input id="href" type="text" th:field="*{href}" placeholder="Doc href" class="form-control">
+            <h3>версии</h3>
+            <div class="col-md-12 form-group">
+                <table border="1" class="table table-striped table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>Версия</th>
+                            <th>Описание</th>
+                            <th>Ссылка</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <!--/*@thymesVar id="docsVersion" type="java.util.List<ru.almazrostov.searchdoc.model.DocsVersion>"*/-->
+                        <tr th:each="dv : ${doc.docsVersionList}">
+                            <td th:text="${dv.version}"></td>
+                            <td th:text="${dv.description}"></td>
+                            <td th:text="${dv.href}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <button type="submit" class="btn btn-primary btn-block mt-3"> Update Doc</button>
