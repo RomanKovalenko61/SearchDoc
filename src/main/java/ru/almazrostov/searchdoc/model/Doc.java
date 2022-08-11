@@ -54,6 +54,10 @@ public class Doc {
             mappedBy = "doc")
     private List<DocsVersion> docsVersionList;
 
+    @OneToOne(cascade = CascadeType.ALL,
+            mappedBy = "doc")
+    private DocActualVersion docActualVersion;
+
     public Doc() {
     }
 
@@ -151,6 +155,14 @@ public class Doc {
 
     public void setDocsVersionList(List<DocsVersion> docsVersionList) {
         this.docsVersionList = docsVersionList;
+    }
+
+    public DocActualVersion getDocActualVersion() {
+        return docActualVersion;
+    }
+
+    public void setDocActualVersion(DocActualVersion docActualVersion) {
+        this.docActualVersion = docActualVersion;
     }
 
     @Override

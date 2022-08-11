@@ -15,7 +15,7 @@ public class DocsVersion {
     private long id;
 
     @Type(type = "org.hibernate.type.UUIDCharType")
-    @Column(name = "uuid", insertable = false, updatable = false)
+    @Column(name = "doc_uuid", insertable = false, updatable = false)
     private UUID uuid;
 
     @Column(name = "version")
@@ -28,7 +28,7 @@ public class DocsVersion {
     private String href;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "uuid")
+    @JoinColumn(name = "doc_uuid")
     private Doc doc;
 
     public DocsVersion() {

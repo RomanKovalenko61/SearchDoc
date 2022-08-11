@@ -83,6 +83,13 @@
                     </tbody>
                 </table>
             </div>
+            <div class="form-row">
+                <div class="col-md-12 form-group">
+                    <label for="actual_version">Актуальная версия</label>
+                    <input id='actual_version' type="number" th:field="${doc.docActualVersion.actualVersion}"
+                           class="form-control">
+                </div>
+            </div>
         </div>
 
         <button type="submit" class="btn btn-primary btn-block mt-3"> Update Doc</button>
