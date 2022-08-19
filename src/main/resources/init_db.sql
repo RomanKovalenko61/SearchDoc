@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS db_search_doc.public.docs (
 );
 
 CREATE TABLE IF NOT EXISTS db_search_doc.public.docs_version (
-    id BIGINT,
+    id BIGSERIAL,
     doc_uuid CHARACTER VARYING(36),
     version INTEGER,
     description TEXT,
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS db_search_doc.public.docs_version (
 );
 
 CREATE TABLE IF NOT EXISTS db_search_doc.public.docs_actual_version (
-    id BIGINT,
+    id BIGSERIAL,
     doc_uuid CHARACTER VARYING(36),
     actual_version INTEGER,
 
